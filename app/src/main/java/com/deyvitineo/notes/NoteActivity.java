@@ -293,22 +293,24 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("mode", mMode);
-    }
+    //Didn't seem to work/do anything.
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putInt("mode", mMode);
+//    }
+//
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        mMode = savedInstanceState.getInt("mode");
+//
+//        if(mMode == EDIT_MODE_ENABLED){
+//            enableEditMode();
+//        }
+//    }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        mMode = savedInstanceState.getInt("mode");
-
-        if(mMode == EDIT_MODE_ENABLED){
-            enableEditMode();
-        }
-    }
-
+    //Allows edit mode to still be enabled if it was when the user walked away
     @Override
     protected void onResume() {
         super.onResume();

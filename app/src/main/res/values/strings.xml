@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="ToolbarColorPickerPreference">Toolbar Color Picker</string>
+
+</resources>

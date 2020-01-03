@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    TODO: Needs work. Add this as an individual feature where the user can select every specifics note color
+        TODO: Implement send feedback to send emails to the apps email.-->
+    <com.skydoves.colorpickerpreference.ColorPickerPreference
+        android:key="@string/ToolbarColorPickerPreference"
+        android:title="Color"
+        android:summary="Change the notes color"
+        app:preference_dialog_title="Color Picker"
+        app:preference_dialog_positive="@string/confirm"
+        app:preference_dialog_negative="@string/cancel"
+        app:preference_palette="@drawable/palette"
+        app:preference_selector="@drawable/wheel"
+        app:default_color="@color/colorPrimary"/>
+
+    <Preference
+        app:key="feedback"
+        app:title="Send feedback"
+        app:summary="Report technical issues or suggest new features"/>
+
+</PreferenceScreen>

@@ -6,66 +6,82 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.deyvitineo.notes.R;
 import com.deyvitineo.notes.entities.Note;
 
-import java.util.ArrayList;
+public class NotesRecyclerAdapter extends ListAdapter<Note, NotesRecyclerAdapter.ViewHolder> {
 
-public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder> {
+    private OnItemClickListener mListener;
 
-    private ArrayList<Note> mNotes;
-    private OnNoteListener mOnNoteListener;
+    //Comparison logic to update list on the recycler view. Needs to extend List Adapter
+    private static final DiffUtil.ItemCallback<Note> DIFF_CALLBACK = new DiffUtil.ItemCallback<Note>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
 
-    public NotesRecyclerAdapter(ArrayList<Note> notes, OnNoteListener onNoteListener) {
-        this.mNotes = notes;
-        this.mOnNoteListener = onNoteListener;
+        @Override
+        public boolean areContentsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
+            return oldItem.getTitle().equals(newItem.getTitle()) &&
+                    oldItem.getContent().equals(newItem.getContent());
+        }
+    };
+
+    protected NotesRecyclerAdapter() {
+        super(DIFF_CALLBACK);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_note_list_item, parent, false);
-        return new ViewHolder(view, mOnNoteListener);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.layout_note_list_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(mNotes.get(position).getTitle());
-        holder.timestamp.setText(mNotes.get(position).getTimestamp());
+        Note note = getItem(position);
+        holder.title.setText(note.getTitle());
+        holder.timestamp.setText(note.getTimestamp());
     }
 
-    @Override
-    public int getItemCount() {
-        return mNotes.size();
+    public Note getNoteAt(int position) {
+        return getItem(position);
     }
 
     /*View Holder Class */
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView title, timestamp;
-        OnNoteListener onNoteListener;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView title, timestamp;
 
-        public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.note_title);
             timestamp = itemView.findViewById(R.id.note_timestamp);
-            this.onNoteListener = onNoteListener;
 
-            itemView.setOnClickListener(this);
-
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            onNoteListener.onNoteClick(getAdapterPosition());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (mListener != null && position != RecyclerView.NO_POSITION) {
+                        mListener.onItemClick(getItem(position));
+                    }
+                }
+            });
         }
     }
 
-    public interface OnNoteListener{
-        void onNoteClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(Note note);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
     }
 
 }

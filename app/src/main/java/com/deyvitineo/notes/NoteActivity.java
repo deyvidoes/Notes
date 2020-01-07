@@ -25,6 +25,10 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         View.OnClickListener {
     private static final String TAG = "NoteActivity";
 
+    public static final String EXTRA_TITLE = "com.deyvitineo.notes.EXTRA_TITLE";
+    public static final String EXTRA_CONTENT = "com.deyvitineo.notes.EXTRA_CONTENT";
+    public static final String EXTRA_ID = "com.deyvitineo.notes.EXTRA_ID";
+
     private static final int EDIT_MODE_ENABLED = 1;
     private static final int EDIT_MODE_DISABLED = 0;
     private static final String DEFAULT_TITLE = "New Note";

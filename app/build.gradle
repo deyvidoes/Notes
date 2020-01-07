@@ -51,4 +51,5 @@ dependencies {
 
     //color picker preference
     implementation "com.github.skydoves:colorpickerpreference:2.0.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 }

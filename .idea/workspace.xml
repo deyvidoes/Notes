@@ -10,25 +10,30 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="173c8a24-a849-4f2c-a998-20057a6895af" name="Default Changelist" comment="Implemented auto save function. Also, if the user is on edit mode then steps out and returns, app now stays on edit mode.">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+    <list default="true" id="173c8a24-a849-4f2c-a998-20057a6895af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/adapters/NotesRecyclerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/adapters/NotesRecyclerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/async/DeleteAsyncTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/async/InsertAsyncTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/async/UpdateAsyncTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/models/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/persistance/NoteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/interfaces/NoteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/persistance/NoteDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/database/NoteDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/persistance/NoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java" afterDir="false" />
+    </list>
+    <list id="b71737c4-3e23-436f-ae68-73bb56f7c6cd" name="Added viewmodels for viewing, deleting, adding and updating notes." comment="Added viewmodels for viewing, deleting, adding and updating notes.">
+      <changelist_data name="Deyvi Tineo" email="deyvitineo@gmail.com" date="1578413722000" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,61 +54,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/interfaces/NoteDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/database/NoteDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="46" column="32" lean-forward="true" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1016#1176#0" expanded="true" />
-                <element signature="e#1175#1176#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="450">
+              <caret line="120" column="4" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
+              <folding>
+                <element signature="e#1874#2019#0" expanded="true" />
+                <element signature="e#2018#2019#0" expanded="true" />
+                <element signature="e#2527#3023#0" expanded="true" />
+                <element signature="e#3022#3023#0" expanded="true" />
+                <element signature="e#3229#3492#0" expanded="true" />
+                <element signature="e#3491#3492#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="28" column="84" lean-forward="true" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/adapters/NotesRecyclerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1032#1033#0" expanded="true" />
-                <element signature="e#1095#1096#0" expanded="true" />
-                <element signature="e#1132#1133#0" expanded="true" />
-                <element signature="e#1195#1196#0" expanded="true" />
-                <element signature="e#1232#1233#0" expanded="true" />
-                <element signature="e#1295#1296#0" expanded="true" />
-                <element signature="e#1443#1444#0" expanded="true" />
-                <element signature="e#1475#1476#0" expanded="true" />
-                <element signature="e#1398#1399#0" expanded="true" />
-                <element signature="e#1444#1445#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,8 +100,8 @@
         <option value="Interface" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -166,18 +149,68 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_note_list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/PreferencesFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/Entities/NoteDatabase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/Entities/Note.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/Interfaces/NoteDao.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/Database/NoteDatabase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/Repositories/NoteRepository.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/AddEditNoteViewModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/DeleteNoteViewModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/ViewDeleteNoteViewModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/adapters/NotesRecyclerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="12" end1="22" start2="12" end2="14" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="23" end1="31" start2="15" end2="19" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="51" end1="53" start2="39" end2="41" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="54" end1="85" start2="42" end2="44" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="89" end1="91" start2="48" end2="50" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="92" end1="107" start2="51" end2="53" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="119" end1="120" start2="65" end2="65" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="121" end1="121" start2="66" end2="67" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="168" end1="169" start2="114" end2="114" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="176" end1="176" start2="121" end2="126" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="179" end1="180" start2="129" end2="130" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="229" end1="230" start2="179" end2="179" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="282" end1="282" start2="231" end2="238" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="291" end1="291" start2="247" end2="248" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="476" end1="477" start2="433" end2="448" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="497" end1="498" start2="468" end2="469" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="510" end1="511" start2="481" end2="482" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="513" end1="517" start2="484" end2="488" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="529" end1="529" start2="500" end2="510" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="571" end1="572" start2="552" end2="555" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="822" end1="823" start2="805" end2="806" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="824" end1="826" start2="807" end2="809" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="829" end1="830" start2="812" end2="823" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="831" end1="833" start2="824" end2="826" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="835" end1="837" start2="828" end2="830" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="841" end1="842" start2="834" end2="835" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="843" end1="845" start2="836" end2="851" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="848" end1="849" start2="854" end2="855" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="850" end1="852" start2="856" end2="861" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="865" end1="866" start2="874" end2="875" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="867" end1="869" start2="876" end2="878" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="871" end1="871" start2="880" end2="888" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="875" end1="876" start2="892" end2="893" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="877" end1="879" start2="894" end2="896" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="881" end1="883" start2="898" end2="902" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="887" end1="888" start2="906" end2="907" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="889" end1="891" start2="908" end2="910" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="893" end1="893" start2="912" end2="914" changelist="b71737c4-3e23-436f-ae68-73bb56f7c6cd" />
+        <range start1="897" end1="898" start2="918" end2="926" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+        <range start1="899" end1="914" start2="927" end2="929" changelist="173c8a24-a849-4f2c-a998-20057a6895af" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="2576" />
@@ -227,7 +260,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -283,12 +315,20 @@
             </path>
             <path>
               <item name="Notes" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="notes" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="viewmodels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -474,7 +514,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578067541946</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Refactored recycler view adapter to implement list adapter in order to update notes without to update the whole list">
+      <created>1578413461716</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578413461716</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added viewmodels for viewing, deleting, adding and updating notes.">
+      <created>1578413722550</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578413722550</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -495,7 +549,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -508,12 +562,12 @@
       <window_info id="Resources Explorer" order="7" weight="0.32869634" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.16901408" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.24485373" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49960256" weight="0.24485373" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.19609967" />
       <window_info anchor="bottom" id="Debug" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="6" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50039744" side_tool="true" weight="0.16576381" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49960256" weight="0.25893825" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.15926327" />
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32936078" />
@@ -526,6 +580,16 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Assistant" order="6" weight="0.3298887" />
     </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -569,7 +633,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented auto save function. Also, if the user is on edit mode then steps out and returns, app now stays on edit mode." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented auto save function. Also, if the user is on edit mode then steps out and returns, app now stays on edit mode." />
+    <MESSAGE value="Refactored recycler view adapter to implement list adapter in order to update notes without to update the whole list" />
+    <MESSAGE value="Added viewmodels for viewing, deleting, adding and updating notes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added viewmodels for viewing, deleting, adding and updating notes." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/deyvitineo/notes/ExampleUnitTest.java">
@@ -820,25 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="75" column="21" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/adapters/NotesRecyclerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1912#1913#0" expanded="true" />
-            <element signature="e#1984#1985#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/com/deyvitineo/notes/persistance/NoteDao_Impl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
@@ -846,27 +893,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/async/InsertAsyncTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="166" column="15" selection-start-line="166" selection-start-column="12" selection-end-line="167" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/interfaces/NoteDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        <state relative-caret-position="306">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -885,19 +915,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/async/InsertAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
+        <state relative-caret-position="1411">
           <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -911,6 +931,84 @@
             <element signature="e#1475#1476#0" expanded="true" />
             <element signature="e#1398#1399#0" expanded="true" />
             <element signature="e#1444#1445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/interfaces/NoteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/ViewDeleteNoteViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/AddEditNoteViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="37" lean-forward="true" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/adapters/NotesRecyclerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="28" column="84" lean-forward="true" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="120" column="4" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="4" />
+          <folding>
+            <element signature="e#1874#2019#0" expanded="true" />
+            <element signature="e#2018#2019#0" expanded="true" />
+            <element signature="e#2527#3023#0" expanded="true" />
+            <element signature="e#3022#3023#0" expanded="true" />
+            <element signature="e#3229#3492#0" expanded="true" />
+            <element signature="e#3491#3492#0" expanded="true" />
           </folding>
         </state>
       </provider>

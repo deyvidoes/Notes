@@ -31,7 +31,7 @@ public class NotesRecyclerAdapter extends ListAdapter<Note, NotesRecyclerAdapter
         }
     };
 
-    protected NotesRecyclerAdapter() {
+    public NotesRecyclerAdapter() {
         super(DIFF_CALLBACK);
     }
 

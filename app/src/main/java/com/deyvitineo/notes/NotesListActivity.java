@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,28 +17,30 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.deyvitineo.notes.adapters.NotesRecyclerAdapter;
 import com.deyvitineo.notes.repositories.NoteRepository;
 import com.deyvitineo.notes.util.VerticalSpacingItemDecorator;
 import com.deyvitineo.notes.entities.Note;
+import com.deyvitineo.notes.viewmodels.ViewDeleteNoteViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //main activity
-public class NotesListActivity extends AppCompatActivity implements NotesRecyclerAdapter.OnNoteListener,
-                                                                    View.OnClickListener{
+public class NotesListActivity extends AppCompatActivity {
 
     private static final String TAG = "NotesListActivity";
 
     // UI components
     private RecyclerView mRecyclerView;
+    private FloatingActionButton mFloatingActionButton;
 
-    // Vars
-    private ArrayList<Note> mNotes = new ArrayList<>();
+    //vars
     private NotesRecyclerAdapter mNotesRecyclerAdapter;
-    private NoteRepository mNoteRepository;
+    private ViewDeleteNoteViewModel mViewDeleteNoteViewModel;
 
 
     @Override
@@ -44,81 +48,76 @@ public class NotesListActivity extends AppCompatActivity implements NotesRecycle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        //TODO: implement fab on alarm app
-        findViewById(R.id.fab_add_note).setOnClickListener(this);
-        mRecyclerView = findViewById(R.id.recycler_view);
-        mNoteRepository = new NoteRepository(this);
+        Log.d(TAG, "onCreate: Activity started");
 
+        initWidgets();
         initRecyclerView();
-        retrieveNotes();
-       // insertFakeNotes();
+        setUpListeners();
 
-        setSupportActionBar((Toolbar)findViewById(R.id.notes_toolbar));
-    }
 
-    private void retrieveNotes(){
-        mNoteRepository.retrieveNotesTask().observe(this, new Observer<List<Note>>() {
+        mViewDeleteNoteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(List<Note> notes) {
-                if(mNotes.size() > 0){
-                    mNotes.clear();
-                }
-                if(notes != null){
-                    mNotes.addAll(notes);
-                }
-                mNotesRecyclerAdapter.notifyDataSetChanged();
+                mNotesRecyclerAdapter.submitList(notes);
             }
         });
+        setSupportActionBar((Toolbar) findViewById(R.id.notes_toolbar));
     }
 
-    private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: initializing recycler view");
+    private void initWidgets() {
+        mFloatingActionButton = findViewById(R.id.fab_add_note);
+        mViewDeleteNoteViewModel = ViewModelProviders.of(this).get(ViewDeleteNoteViewModel.class);
+
+    }
+
+    private void initRecyclerView() {
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(10);
-        mRecyclerView.addItemDecoration(itemDecorator);
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
-        mNotesRecyclerAdapter = new NotesRecyclerAdapter(mNotes, this);
+        mRecyclerView.setHasFixedSize(true);
+
+        mNotesRecyclerAdapter = new NotesRecyclerAdapter();
         mRecyclerView.setAdapter(mNotesRecyclerAdapter);
+
+        mNotesRecyclerAdapter.setOnItemClickListener(new NotesRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Note note) {
+                Intent intent = new Intent(NotesListActivity.this, NoteActivity.class);
+                intent.putExtra(NoteActivity.EXTRA_TITLE, note.getTitle());
+                intent.putExtra(NoteActivity.EXTRA_CONTENT, note.getContent());
+                intent.putExtra(NoteActivity.EXTRA_ID, note.getId());
+                startActivity(intent);
+            }
+        });
+        Log.d(TAG, "initRecyclerView: recycler view and adapter initialized");
     }
 
-    @Override
-    public void onNoteClick(int position) {
-//        Toast.makeText(this, "Item #: " + position + "Clicked", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, NoteActivity.class);
-        intent.putExtra("selected_note", mNotes.get(position));
-        startActivity(intent);
+    public void setUpListeners() {
+
+        //Add new note listener
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NotesListActivity.this, NoteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Implements Touch gesture to delete a note on a swipe left
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                mViewDeleteNoteViewModel.delete(mNotesRecyclerAdapter.getNoteAt(viewHolder.getAdapterPosition()));
+                Log.d(TAG, "onSwiped: Note deleted");
+                Toast.makeText(NotesListActivity.this, "Note Deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(mRecyclerView);
+        Log.d(TAG, "setUpListeners: Listeners initialized");
     }
-
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(this, NoteActivity.class);
-        startActivity(intent);
-    }
-
-    private void deleteNote(Note note){
-        mNotes.remove(note);
-        mNoteRepository.deleteNote(note);
-        mNotesRecyclerAdapter.notifyDataSetChanged();
-    }
-
-    //TODO: implement on alarm me app
-    private ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            deleteNote(mNotes.get(viewHolder.getAdapterPosition()));
-        }
-
-        //TODO: (1) Implement drawing as the user swipes to delete.
-        @Override
-        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-        }
-    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -130,7 +129,7 @@ public class NotesListActivity extends AppCompatActivity implements NotesRecycle
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.settings){
+        if (id == R.id.settings) {
             Intent intent = new Intent(this, PreferencesContainerActivity.class);
             startActivity(intent);
             return true;

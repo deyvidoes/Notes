@@ -15,8 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.deyvitineo.notes.models.Note;
-import com.deyvitineo.notes.persistance.NoteRepository;
+import com.deyvitineo.notes.entities.Note;
+import com.deyvitineo.notes.repositories.NoteRepository;
 import com.deyvitineo.notes.util.Utility;
 
 public class NoteActivity extends AppCompatActivity implements View.OnTouchListener,
@@ -106,6 +106,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         return true;
     }
 
+    //TODO: find a way here to figure out the rotation issue. Apply MVVM to the whole project so that it deals with screen rotations on its own
     private void saveChanges(){
         if(mIsNewNote){
             saveNewNote();
@@ -153,7 +154,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mCheckContainer.setVisibility(View.GONE);
         mViewTitle.setVisibility(View.VISIBLE);
         mEditTitle.setVisibility(View.GONE);
-
         mMode = EDIT_MODE_DISABLED;
         disableContentInteraction();
 
@@ -177,10 +177,9 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
             Toast.makeText(this, "Cannot create a note without content.", Toast.LENGTH_SHORT).show();
             finish();
         }
-
-
     }
 
+    //hides keyboard
     private void hideSoftKeyboard(){
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
         View view = this.getCurrentFocus();
@@ -279,6 +278,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
+    //shows keyboard
     private void mEditTitleShowKeyboard(){
         InputMethodManager imm =  (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.showSoftInput(mEditTitle, InputMethodManager.SHOW_IMPLICIT);
@@ -294,26 +294,28 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     //Didn't seem to work/do anything.
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putInt("mode", mMode);
-//    }
-//
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        mMode = savedInstanceState.getInt("mode");
-//
-//        if(mMode == EDIT_MODE_ENABLED){
-//            enableEditMode();
-//        }
-//    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("mode", mMode);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mMode = savedInstanceState.getInt("mode");
+
+        if(mMode == EDIT_MODE_ENABLED){
+            enableEditMode();
+            mEditTitleShowKeyboard();
+        }
+    }
 
     //Allows edit mode to still be enabled if it was when the user walked away
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume: CALLED");
         if(mMode == EDIT_MODE_ENABLED){
             enableEditMode();
         }
@@ -325,10 +327,19 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(TAG, "onPause: CALLED");
         if(mMode == EDIT_MODE_ENABLED){
             disableEditMode();
             mIsNewNote = false;
             mMode = EDIT_MODE_ENABLED;
         }
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: CALLED");
+    }
+
+    //TODO: fix bug where when creating a new note, if the screen is rotated, the same note will be saved over and over.
 }

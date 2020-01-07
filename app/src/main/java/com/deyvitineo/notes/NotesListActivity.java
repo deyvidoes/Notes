@@ -3,15 +3,13 @@ package com.deyvitineo.notes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
-import androidx.preference.PreferenceFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,9 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.deyvitineo.notes.adapters.NotesRecyclerAdapter;
-import com.deyvitineo.notes.persistance.NoteRepository;
+import com.deyvitineo.notes.repositories.NoteRepository;
 import com.deyvitineo.notes.util.VerticalSpacingItemDecorator;
-import com.deyvitineo.notes.models.Note;
+import com.deyvitineo.notes.entities.Note;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +102,7 @@ public class NotesListActivity extends AppCompatActivity implements NotesRecycle
     }
 
     //TODO: implement on alarm me app
-    private ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+    private ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -113,6 +111,12 @@ public class NotesListActivity extends AppCompatActivity implements NotesRecycle
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             deleteNote(mNotes.get(viewHolder.getAdapterPosition()));
+        }
+
+        //TODO: (1) Implement drawing as the user swipes to delete.
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
 

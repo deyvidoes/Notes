@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.deyvitineo.notes.R;
-import com.deyvitineo.notes.models.Note;
+import com.deyvitineo.notes.entities.Note;
 
 import java.util.ArrayList;
 

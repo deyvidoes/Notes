@@ -25,4 +25,5 @@ public class AddEditNoteViewModel extends AndroidViewModel {
     public void update(Note note) {
         mNoteRepository.update(note);
     }
+
 }

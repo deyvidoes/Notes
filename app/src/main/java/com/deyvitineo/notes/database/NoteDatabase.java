@@ -54,7 +54,7 @@ public abstract class NoteDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
             String timeStamp = Utility.getCurrentTimestamp();
             timeStamp = timeStamp.replace("-", " ");
-            noteDao.insert(new Note("Welcome to the notes app!", "I hope you enjoy it!", timeStamp));
+            noteDao.insert(new Note("Welcome!!", "I hope you enjoy this simple but yet effective notes app!", timeStamp));
             return null;
         }
     }

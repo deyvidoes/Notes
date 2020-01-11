@@ -1,5 +1,6 @@
 package com.deyvitineo.notes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -31,10 +32,15 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     public static final String EXTRA_CONTENT = "com.deyvitineo.notes.EXTRA_CONTENT";
     public static final String EXTRA_ID = "com.deyvitineo.notes.EXTRA_ID";
 
+    private static final int EDIT_MODE_ENABLED = 1;
+    private static final int EDIT_MODE_DISABLED = 0;
+
+
     private AddEditNoteViewModel mAddEditNoteViewModel;
 
     private String mTitle, mContent;
     private Long mID;
+    private int mMode;
 
 
     //UI Components
@@ -81,13 +87,15 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     private void initActivityFromIntent() {
         Intent intent = getIntent();
 
-        if (!intent.hasExtra(EXTRA_ID)) {
-            enableNewNote();
+        if(mID != null){
+            enableViewMode();
         } else if (intent.hasExtra(EXTRA_ID)) {
             mTitle = intent.getStringExtra(EXTRA_TITLE);
             mContent = intent.getStringExtra(EXTRA_CONTENT);
             mID = intent.getLongExtra(EXTRA_ID, -1);
             enableViewMode();
+        } else if (!intent.hasExtra(EXTRA_ID)) {
+            enableNewNote();
         }
     }
 
@@ -114,11 +122,13 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
     private void enableViewMode() {
         disableEditMode();
+        mMode = EDIT_MODE_DISABLED;
         mViewTitle.setText(mTitle);
         mEditTextContent.setText(mContent);
     }
 
     private void enableEditMode() {
+        mMode = EDIT_MODE_ENABLED;
         mEditTitle.setText(mViewTitle.getText().toString());
         enableContentInteraction();
         mBackArrowContainer.setVisibility(View.GONE);
@@ -151,7 +161,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
             Toast.makeText(this, "Note Updated with ID: " + mID, Toast.LENGTH_SHORT).show();
 
         } else {
-            mID =  mAddEditNoteViewModel.insert(note);
+            mID = mAddEditNoteViewModel.insert(note);
             Log.d(TAG, "saveNote: NEW NOTE CREATED WITH ID: " + mID);
             Toast.makeText(this, "New Note Created: " + mID, Toast.LENGTH_SHORT).show();
         }
@@ -258,6 +268,30 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("mode", mMode);
+        outState.putLong("id", mID);
+        if(mMode == EDIT_MODE_ENABLED){
+            outState.putString("edit_title", mEditTitle.getText().toString());
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mID = savedInstanceState.getLong("id");
+        mMode = savedInstanceState.getInt("mode");
+        if(mMode == EDIT_MODE_ENABLED){
+            enableEditMode();
+            mEditTitle.setText(savedInstanceState.getString("edit_title"));
+        } else{
+            enableViewMode();
+        }
     }
 }
 

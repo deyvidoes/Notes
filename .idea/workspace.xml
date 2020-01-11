@@ -7,7 +7,7 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Firebase" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="173c8a24-a849-4f2c-a998-20057a6895af" name="Default Changelist" comment="Refactored NotesListActivity class to fit with the MVVM pattern">
@@ -18,14 +18,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/com.deyvitineo.notes.database.NoteDatabase/1.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/com.deyvitineo.notes.database.NoteDatabase/1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/database/NoteDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/database/NoteDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/interfaces/NoteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/interfaces/NoteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/AddEditNoteViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/AddEditNoteViewModel.java" afterDir="false" />
     </list>
     <list id="b71737c4-3e23-436f-ae68-73bb56f7c6cd" name="Added viewmodels for viewing, deleting, adding and updating notes." comment="Added viewmodels for viewing, deleting, adding and updating notes.">
       <changelist_data name="Deyvi Tineo" email="deyvitineo@gmail.com" date="1578413722000" />
@@ -52,44 +45,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="144" column="51" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
+            <state relative-caret-position="524">
+              <caret line="297" column="5" lean-forward="true" selection-start-line="297" selection-start-column="5" selection-end-line="297" selection-end-column="5" />
               <folding>
-                <element signature="e#7126#7127#0" expanded="true" />
-                <element signature="e#7286#7287#0" expanded="true" />
-                <element signature="e#7730#7731#0" expanded="true" />
-                <element signature="e#7994#7995#0" expanded="true" />
-                <element signature="e#8323#8324#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/viewmodels/AddEditNoteViewModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/repositories/NoteRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#insert#0;class#NoteRepository#0" />
-                <element signature="class#InsertNoteAsyncTask#0;class#NoteRepository#0" />
-                <element signature="e#1954#1955#0" expanded="true" />
-                <element signature="e#2000#2001#0" expanded="true" />
-                <element signature="class#UpdateNoteAsyncTask#0;class#NoteRepository#0" />
-                <element signature="class#DeleteNoteAsyncTask#0;class#NoteRepository#0" />
+                <element signature="method#setupWidgets#0;class#NoteActivity#0" />
+                <element signature="method#setListeners#0;class#NoteActivity#0" />
+                <element signature="method#disableContentInteraction#0;class#NoteActivity#0" />
+                <element signature="method#enableContentInteraction#0;class#NoteActivity#0" />
+                <element signature="e#3842#3843#0" expanded="true" />
+                <element signature="e#3874#3875#0" expanded="true" />
+                <element signature="method#hideSoftKeyboard#0;class#NoteActivity#0" />
+                <element signature="e#7424#7425#0" expanded="true" />
+                <element signature="e#7584#7585#0" expanded="true" />
+                <element signature="e#8028#8029#0" expanded="true" />
+                <element signature="e#8292#8293#0" expanded="true" />
+                <element signature="e#8621#8622#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -485,6 +455,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14149444" />
@@ -496,12 +467,12 @@
       <window_info id="Resources Explorer" order="7" weight="0.32869634" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.16901408" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.49960256" visible="true" weight="0.31744313" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.49960256" visible="true" weight="0.2881907" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.44637054" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50039744" side_tool="true" weight="0.16576381" />
-      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49960256" weight="0.25893825" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49960256" weight="0.15709643" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.30227518" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32936078" />
@@ -822,17 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-327">
-          <caret line="86" column="69" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
-          <folding>
-            <element signature="e#2687#3183#0" expanded="true" />
-            <element signature="e#3182#3183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/entities/Note.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -907,16 +867,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NotesListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="86" column="69" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/deyvitineo/notes/NoteActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="144" column="51" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
+        <state relative-caret-position="524">
+          <caret line="297" column="5" lean-forward="true" selection-start-line="297" selection-start-column="5" selection-end-line="297" selection-end-column="5" />
           <folding>
-            <element signature="e#7126#7127#0" expanded="true" />
-            <element signature="e#7286#7287#0" expanded="true" />
-            <element signature="e#7730#7731#0" expanded="true" />
-            <element signature="e#7994#7995#0" expanded="true" />
-            <element signature="e#8323#8324#0" expanded="true" />
+            <element signature="method#setupWidgets#0;class#NoteActivity#0" />
+            <element signature="method#setListeners#0;class#NoteActivity#0" />
+            <element signature="method#disableContentInteraction#0;class#NoteActivity#0" />
+            <element signature="method#enableContentInteraction#0;class#NoteActivity#0" />
+            <element signature="e#3842#3843#0" expanded="true" />
+            <element signature="e#3874#3875#0" expanded="true" />
+            <element signature="method#hideSoftKeyboard#0;class#NoteActivity#0" />
+            <element signature="e#7424#7425#0" expanded="true" />
+            <element signature="e#7584#7585#0" expanded="true" />
+            <element signature="e#8028#8029#0" expanded="true" />
+            <element signature="e#8292#8293#0" expanded="true" />
+            <element signature="e#8621#8622#0" expanded="true" />
           </folding>
         </state>
       </provider>

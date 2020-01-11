@@ -87,6 +87,10 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     private void initActivityFromIntent() {
         Intent intent = getIntent();
 
+        /**
+         * Here We check if the mID is not null which indicates that a new note was inserted and then
+         * edited or an old note was accessed then edited.
+         */
         if(mID != null){
             enableViewMode();
         } else if (intent.hasExtra(EXTRA_ID)) {
@@ -99,6 +103,10 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
+    /**
+     * Disables any content interaction with the edit text view for the description/content,
+     * making it a "textview"
+     */
     private void disableContentInteraction() {
         mEditTextContent.setKeyListener(null);
         mEditTextContent.setFocusable(false);
@@ -107,6 +115,9 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mEditTextContent.clearFocus();
     }
 
+    /**
+     * Enables all content interaction with the edit text view for the description/content
+     */
     private void enableContentInteraction() {
         mEditTextContent.setKeyListener(new EditText(this).getKeyListener());
         mEditTextContent.setFocusable(true);
@@ -116,10 +127,16 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
     }
 
+    /**
+     * When a new note is created, it enables editMode with empty parameters
+     */
     private void enableNewNote() {
         enableEditMode();
     }
 
+    /**
+     * Enables view mode. Changes mMode to disable and disables edit mode.
+     */
     private void enableViewMode() {
         disableEditMode();
         mMode = EDIT_MODE_DISABLED;
@@ -127,6 +144,9 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mEditTextContent.setText(mContent);
     }
 
+    /**
+     * Enables edit mode and content interaction
+     */
     private void enableEditMode() {
         mMode = EDIT_MODE_ENABLED;
         mEditTitle.setText(mViewTitle.getText().toString());
@@ -137,6 +157,9 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mEditTitle.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Disables edit mode and content interaction
+     */
     private void disableEditMode() {
         disableContentInteraction();
         mBackArrowContainer.setVisibility(View.VISIBLE);
@@ -145,6 +168,10 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mEditTitle.setVisibility(View.GONE);
     }
 
+    /**
+     * Updates the view title text view. Identifies whether a new note needs to be saved
+     * or an old one updated based on the "mID"
+     */
     private void saveNote() {
 
         mViewTitle.setText(mEditTitle.getText().toString());
@@ -175,7 +202,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
-
 
     @Override
     public void onClick(View v) {
@@ -276,6 +302,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
         outState.putInt("mode", mMode);
         outState.putLong("id", mID);
+        //if the note is being edited, pass the edit title info.
         if(mMode == EDIT_MODE_ENABLED){
             outState.putString("edit_title", mEditTitle.getText().toString());
         }
@@ -284,8 +311,11 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
         mID = savedInstanceState.getLong("id");
         mMode = savedInstanceState.getInt("mode");
+
+        //if the note was being edited, restore the title.
         if(mMode == EDIT_MODE_ENABLED){
             enableEditMode();
             mEditTitle.setText(savedInstanceState.getString("edit_title"));
@@ -295,5 +325,3 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     }
 }
 
-
-//TODO: Bugs: double insert when turning device sideways, editing note right after insert

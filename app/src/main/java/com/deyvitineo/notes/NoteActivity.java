@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deyvitineo.notes.entities.Note;
-import com.deyvitineo.notes.repositories.NoteRepository;
 import com.deyvitineo.notes.util.Utility;
 import com.deyvitineo.notes.viewmodels.AddEditNoteViewModel;
 
@@ -35,9 +34,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     private AddEditNoteViewModel mAddEditNoteViewModel;
 
     private String mTitle, mContent;
-    private int mID;
-
-    private boolean mSaveNewNote;
+    private Long mID;
 
 
     //UI Components
@@ -86,11 +83,10 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
         if (!intent.hasExtra(EXTRA_ID)) {
             enableNewNote();
-            mSaveNewNote = true;
         } else if (intent.hasExtra(EXTRA_ID)) {
             mTitle = intent.getStringExtra(EXTRA_TITLE);
             mContent = intent.getStringExtra(EXTRA_CONTENT);
-            mID = intent.getIntExtra(EXTRA_ID, -1);
+            mID = intent.getLongExtra(EXTRA_ID, -1);
             enableViewMode();
         }
     }
@@ -141,25 +137,23 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
     private void saveNote() {
 
-        //updates existing note. Next Statement adds new note
-        if (getIntent().hasExtra(EXTRA_ID)) {
-            mViewTitle.setText(mEditTitle.getText().toString());
-            String timeStamp = Utility.getCurrentTimestamp();
-            timeStamp = timeStamp.replace("-", " ");
+        mViewTitle.setText(mEditTitle.getText().toString());
+        String timeStamp = Utility.getCurrentTimestamp();
+        timeStamp = timeStamp.replace("-", " ");
+        Note note = new Note(mTitle, mContent, timeStamp);
 
-            Note note = new Note(mTitle, mContent, timeStamp);
+        Log.d(TAG, "saveNote: MID value is: " + mID);
+        //updates existing note. Next Statement adds new note
+        if (mID != null) {
             note.setId(mID);
             mAddEditNoteViewModel.update(note);
-            Toast.makeText(this, "Note Updated", Toast.LENGTH_SHORT).show();
-        } else if (!getIntent().hasExtra(EXTRA_ID)) {
-            mViewTitle.setText(mEditTitle.getText().toString());
-            String timeStamp = Utility.getCurrentTimestamp();
-            timeStamp = timeStamp.replace("-", " ");
+            Log.d(TAG, "saveNote: ID = :  " + mID + "/nTitle: " + mTitle + "/nContent: " + mContent);
+            Toast.makeText(this, "Note Updated with ID: " + mID, Toast.LENGTH_SHORT).show();
 
-            Note note = new Note(mTitle, mContent, timeStamp);
-            mAddEditNoteViewModel.insert(note);
-            Toast.makeText(this, "New Note Created:", Toast.LENGTH_SHORT).show();
-            //TODO: WORK HERE
+        } else {
+            mID =  mAddEditNoteViewModel.insert(note);
+            Log.d(TAG, "saveNote: NEW NOTE CREATED WITH ID: " + mID);
+            Toast.makeText(this, "New Note Created: " + mID, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -178,7 +172,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         switch (v.getId()) {
 
             case R.id.toolbar_check:
-
                 mTitle = mEditTitle.getText().toString();
                 mContent = mEditTextContent.getText().toString();
 
@@ -186,12 +179,11 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
                 if (mTitle.trim().isEmpty() || mContent.trim().isEmpty()) {
                     Toast.makeText(this, "Please add a title and description", Toast.LENGTH_SHORT).show();
                     return;
-                } else {
-                    hideSoftKeyboard();
-                    disableEditMode();
-                    saveNote();
-                    break;
                 }
+                saveNote();
+                hideSoftKeyboard();
+                disableEditMode();
+                break;
             case R.id.note_view_title:
                 enableEditMode();
                 mEditTitle.requestFocus();
@@ -269,3 +261,5 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     }
 }
 
+
+//TODO: Bugs: double insert when turning device sideways, editing note right after insert

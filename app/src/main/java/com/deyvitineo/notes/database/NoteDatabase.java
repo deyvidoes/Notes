@@ -13,7 +13,7 @@ import com.deyvitineo.notes.entities.Note;
 import com.deyvitineo.notes.interfaces.NoteDao;
 import com.deyvitineo.notes.util.Utility;
 
-@Database(entities = Note.class, version = 1)
+@Database(entities = Note.class, version = 4)
 public abstract class NoteDatabase extends RoomDatabase {
 
     //singleton

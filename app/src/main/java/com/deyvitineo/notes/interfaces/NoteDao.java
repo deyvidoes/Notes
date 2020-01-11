@@ -15,7 +15,7 @@ import java.util.List;
 public interface NoteDao {
 
     @Insert
-    void insert(Note note);
+    Long insert(Note note);
 
     @Query("SELECT * FROM notes ORDER BY timestamp DESC")
     LiveData<List<Note>> getAllNotes();

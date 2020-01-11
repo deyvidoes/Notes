@@ -10,6 +10,7 @@ import com.deyvitineo.notes.interfaces.NoteDao;
 import com.deyvitineo.notes.entities.Note;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class NoteRepository {
 
@@ -26,8 +27,16 @@ public class NoteRepository {
     /*These public methods will be accessible by the view model which will not have any idea of how
      *the data is being handled or whatnot (abstraction)
      */
-    public void insert(Note note) {
-        new InsertNoteAsyncTask(mNoteDao).execute(note);
+    public Long insert(Note note) {
+        try {
+            Long id = new InsertNoteAsyncTask(mNoteDao).execute(note).get();
+            return id;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void update(Note note) {
@@ -43,17 +52,18 @@ public class NoteRepository {
     }
 
     //Task in charge of inserting notes
-    private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Void> {
+    private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Long>{
+
         private NoteDao noteDao;
 
-        private InsertNoteAsyncTask(NoteDao noteDao) {
+        private InsertNoteAsyncTask(NoteDao noteDao){
             this.noteDao = noteDao;
         }
 
         @Override
-        protected Void doInBackground(Note... notes) {
-            noteDao.insert(notes[0]);
-            return null;
+        protected Long doInBackground(Note... notes) {
+            Long id = noteDao.insert(notes[0]);
+            return id;
         }
     }
     //Task in charge of updating notes
@@ -85,3 +95,5 @@ public class NoteRepository {
         }
     }
 }
+
+

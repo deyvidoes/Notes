@@ -59,6 +59,19 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_edit_add_note);
 
+        if(savedInstanceState != null){
+            if(savedInstanceState.containsKey("id")){
+                mID = savedInstanceState.getLong("id");
+            }
+            mMode = savedInstanceState.getInt("mode");
+
+            if(mMode == EDIT_MODE_ENABLED){
+                mTitle = savedInstanceState.getString("editing_title");
+            } else if(mMode == EDIT_MODE_DISABLED){
+                mTitle = savedInstanceState.getString("title");
+            }
+        }
+
         setupWidgets();
         setListeners();
         initActivityFromIntent();
@@ -87,21 +100,32 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     private void initActivityFromIntent() {
         Intent intent = getIntent();
 
-        /**
-         * Here We check if the mID is not null which indicates that a new note was inserted and then
-         * edited or an old note was accessed then edited.
-         */
-        if(mID != null){
-            enableViewMode();
-        } else if (intent.hasExtra(EXTRA_ID)) {
+        Log.d(TAG, "initActivityFromIntent: MID = " + mID);
+        if (mID != null) { //for newly created notes or notes loaded from intents after a config change
+            if (mMode == EDIT_MODE_ENABLED) {
+                enableEditMode();
+                Log.d(TAG, "initActivityFromIntent: called 1: NEWLY CREATED NOTE OR LOADED AFTER CONFIG CHANGES");
+            } else {
+                if(intent.hasExtra(EXTRA_ID)){
+                    mTitle = intent.getStringExtra(EXTRA_TITLE);
+                } else{
+
+                }
+                enableViewMode();
+                Log.d(TAG, "initActivityFromIntent: called 2: NEWLY CREATED NOTE OR LOADED AFTER CONFIG CHANGES");
+            }
+        } else if (mID == null && !intent.hasExtra(EXTRA_ID)) { //new note
+            enableEditMode();
+            Log.d(TAG, "initActivityFromIntent: called 3: NEW NOTE");
+        } else if (intent.hasExtra(EXTRA_ID)) { //should only be called once for when the activity is loaded from intent. Might need boolean
             mTitle = intent.getStringExtra(EXTRA_TITLE);
             mContent = intent.getStringExtra(EXTRA_CONTENT);
             mID = intent.getLongExtra(EXTRA_ID, -1);
             enableViewMode();
-        } else if (!intent.hasExtra(EXTRA_ID)) {
-            enableNewNote();
+            Log.d(TAG, "initActivityFromIntent: called 4: NOTE FROM INTENT. SHOULD ONLY BE CALLED ONCE");
         }
     }
+
 
     /**
      * Disables any content interaction with the edit text view for the description/content,
@@ -128,18 +152,10 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     /**
-     * When a new note is created, it enables editMode with empty parameters
-     */
-    private void enableNewNote() {
-        enableEditMode();
-    }
-
-    /**
      * Enables view mode. Changes mMode to disable and disables edit mode.
      */
     private void enableViewMode() {
         disableEditMode();
-        mMode = EDIT_MODE_DISABLED;
         mViewTitle.setText(mTitle);
         mEditTextContent.setText(mContent);
     }
@@ -149,7 +165,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
      */
     private void enableEditMode() {
         mMode = EDIT_MODE_ENABLED;
-        mEditTitle.setText(mViewTitle.getText().toString());
+        mEditTitle.setText(mTitle);
         enableContentInteraction();
         mBackArrowContainer.setVisibility(View.GONE);
         mCheckContainer.setVisibility(View.VISIBLE);
@@ -162,6 +178,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
      */
     private void disableEditMode() {
         disableContentInteraction();
+        mMode = EDIT_MODE_DISABLED;
         mBackArrowContainer.setVisibility(View.VISIBLE);
         mCheckContainer.setVisibility(View.GONE);
         mViewTitle.setVisibility(View.VISIBLE);
@@ -194,6 +211,27 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if(mID != null){
+            outState.putLong("id", mID);
+        }
+        outState.putInt("mode", mMode);
+        if(mMode == EDIT_MODE_ENABLED){
+            outState.putString("editing_title", mEditTitle.getText().toString());
+        }
+        if(mID != null && mMode == EDIT_MODE_DISABLED){
+            outState.putString("title", mTitle);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
     //hides keyboard
     private void hideSoftKeyboard() {
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -218,7 +256,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
                 }
                 saveNote();
                 hideSoftKeyboard();
-                disableEditMode();
+                enableViewMode();
                 break;
             case R.id.note_view_title:
                 enableEditMode();
@@ -232,7 +270,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
-    //    Method for implementing touch listeners
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         return mGestureDetector.onTouchEvent(event);
@@ -294,34 +331,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putInt("mode", mMode);
-        outState.putLong("id", mID);
-        //if the note is being edited, pass the edit title info.
-        if(mMode == EDIT_MODE_ENABLED){
-            outState.putString("edit_title", mEditTitle.getText().toString());
-        }
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        mID = savedInstanceState.getLong("id");
-        mMode = savedInstanceState.getInt("mode");
-
-        //if the note was being edited, restore the title.
-        if(mMode == EDIT_MODE_ENABLED){
-            enableEditMode();
-            mEditTitle.setText(savedInstanceState.getString("edit_title"));
-        } else{
-            enableViewMode();
-        }
     }
 }
 

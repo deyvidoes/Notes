@@ -49,7 +49,6 @@ public class NotesListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notes);
 
         Log.d(TAG, "onCreate: Activity started");
-
         initWidgets();
         initRecyclerView();
         setUpListeners();

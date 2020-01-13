@@ -52,11 +52,11 @@ public class NoteRepository {
     }
 
     //Task in charge of inserting notes
-    private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Long>{
+    private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Long> {
 
         private NoteDao noteDao;
 
-        private InsertNoteAsyncTask(NoteDao noteDao){
+        private InsertNoteAsyncTask(NoteDao noteDao) {
             this.noteDao = noteDao;
         }
 
@@ -66,6 +66,7 @@ public class NoteRepository {
             return id;
         }
     }
+
     //Task in charge of updating notes
     private static class UpdateNoteAsyncTask extends AsyncTask<Note, Void, Void> {
         private NoteDao noteDao;
@@ -80,6 +81,7 @@ public class NoteRepository {
             return null;
         }
     }
+
     //Task in charge of  deleting a single note
     private static class DeleteNoteAsyncTask extends AsyncTask<Note, Void, Void> {
         private NoteDao noteDao;

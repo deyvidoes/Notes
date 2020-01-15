@@ -44,6 +44,4 @@ public class Note {
     public void setId(Long id) {
         this.id = id;
     }
-
-    //TODO: DONE REFACTORING
 }

@@ -58,6 +58,4 @@ public abstract class NoteDatabase extends RoomDatabase {
             return null;
         }
     }
-
-    //TODO: DONE REFACTORING
 }

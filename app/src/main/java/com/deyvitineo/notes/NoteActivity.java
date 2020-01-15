@@ -148,7 +148,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mEditTextContent.setFocusableInTouchMode(true);
         mEditTextContent.setCursorVisible(true);
         mEditTextContent.requestFocus();
-
     }
 
     /**
@@ -166,11 +165,11 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     private void enableEditMode() {
         mMode = EDIT_MODE_ENABLED;
         mEditTitle.setText(mTitle);
-        enableContentInteraction();
         mBackArrowContainer.setVisibility(View.GONE);
         mCheckContainer.setVisibility(View.VISIBLE);
         mViewTitle.setVisibility(View.GONE);
         mEditTitle.setVisibility(View.VISIBLE);
+        enableContentInteraction();
     }
 
     /**
@@ -239,6 +238,12 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         if (view != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    //shows keyboard for edit title
+    private void showKeyboard() {
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(mEditTitle, InputMethodManager.SHOW_IMPLICIT);
     }
 
     @Override
@@ -322,15 +327,13 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         return false;
     }
 
-    //shows keyboard
-    private void showKeyboard() {
-        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mEditTitle, InputMethodManager.SHOW_IMPLICIT);
-    }
+
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    //TODO: SHOW KEYBOARD ON SCREEN ROTATIONS
 }
 

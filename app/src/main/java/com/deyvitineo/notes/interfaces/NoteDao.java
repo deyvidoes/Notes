@@ -25,7 +25,4 @@ public interface NoteDao {
 
     @Update
     void update(Note... note);
-
-    //TODO: DONE refactoring
-
 }

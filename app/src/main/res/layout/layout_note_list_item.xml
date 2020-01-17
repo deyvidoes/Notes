@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:weightSum="100"
-    android:background="@color/lightYellow"
+    android:background="@color/notes_list"
     android:gravity="center_vertical">
 
     <View
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:background="@color/mediumYellow"/>
+        android:background="@color/notes_list_edge"/>
 
     <TextView
         android:layout_width="0dp"
@@ -21,8 +21,7 @@
         android:textSize="23sp"
         android:lines="1"
         android:text="Some Title here "
-        android:padding="10dp"
-        android:textColor="@color/black"/>
+        android:padding="10dp" />
 
     <View
         android:layout_width="0dp"

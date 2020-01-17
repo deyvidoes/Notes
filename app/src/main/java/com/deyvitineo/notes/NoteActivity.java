@@ -201,12 +201,12 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
             note.setId(mID);
             mAddEditNoteViewModel.update(note);
             Log.d(TAG, "saveNote: ID = :  " + mID + "/nTitle: " + mTitle + "/nContent: " + mContent);
-            Toast.makeText(this, "Note Updated with ID: " + mID, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Note Updated", Toast.LENGTH_SHORT).show();
 
         } else {
             mID = mAddEditNoteViewModel.insert(note);
             Log.d(TAG, "saveNote: NEW NOTE CREATED WITH ID: " + mID);
-            Toast.makeText(this, "New Note Created: " + mID, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "New Note Created", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -331,9 +331,12 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onBackPressed() {
+
+        //implement if i want to save on back pressed
+//        if(mMode == EDIT_MODE_ENABLED){
+//            onClick(mCheck);
+//        }
         super.onBackPressed();
     }
-
-    //TODO: SHOW KEYBOARD ON SCREEN ROTATIONS
 }
 

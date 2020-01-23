@@ -4,14 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,13 +18,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.deyvitineo.notes.adapters.NotesRecyclerAdapter;
-import com.deyvitineo.notes.repositories.NoteRepository;
 import com.deyvitineo.notes.util.VerticalSpacingItemDecorator;
 import com.deyvitineo.notes.entities.Note;
 import com.deyvitineo.notes.viewmodels.ViewDeleteNoteViewModel;
+import com.deyvitineo.notes.viewmodels.ViewDeleteNoteViewModelFactory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //main activity
@@ -40,6 +37,7 @@ public class NotesListActivity extends AppCompatActivity {
 
     //vars
     private NotesRecyclerAdapter mNotesRecyclerAdapter;
+    private ViewDeleteNoteViewModelFactory factory;
     private ViewDeleteNoteViewModel mViewDeleteNoteViewModel;
 
 
@@ -51,8 +49,16 @@ public class NotesListActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Activity started");
         initWidgets();
         initRecyclerView();
-        setUpListeners();
+        initializeListeners();
 
+        setSupportActionBar((Toolbar) findViewById(R.id.notes_toolbar));
+    }
+
+    private void initWidgets() {
+        mFloatingActionButton = findViewById(R.id.fab_add_note);
+
+        factory = new ViewDeleteNoteViewModelFactory(this.getApplication());
+        mViewDeleteNoteViewModel = ViewModelProviders.of(this, factory).get(ViewDeleteNoteViewModel.class);
 
         mViewDeleteNoteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
@@ -60,12 +66,6 @@ public class NotesListActivity extends AppCompatActivity {
                 mNotesRecyclerAdapter.submitList(notes);
             }
         });
-        setSupportActionBar((Toolbar) findViewById(R.id.notes_toolbar));
-    }
-
-    private void initWidgets() {
-        mFloatingActionButton = findViewById(R.id.fab_add_note);
-        mViewDeleteNoteViewModel = ViewModelProviders.of(this).get(ViewDeleteNoteViewModel.class);
 
     }
 
@@ -93,7 +93,7 @@ public class NotesListActivity extends AppCompatActivity {
         Log.d(TAG, "initRecyclerView: recycler view and adapter initialized");
     }
 
-    public void setUpListeners() {
+    public void initializeListeners() {
 
         //Add new note listener
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +118,7 @@ public class NotesListActivity extends AppCompatActivity {
                 Toast.makeText(NotesListActivity.this, "Note Deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(mRecyclerView);
-        Log.d(TAG, "setUpListeners: Listeners initialized");
+        Log.d(TAG, "initializeListeners: Listeners initialized");
     }
 
     @Override

@@ -50,10 +50,13 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    //
+    //preference
     implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
 
     //color picker preference
     implementation "com.github.skydoves:colorpickerpreference:2.0.0"
+
+    //ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0-beta01'
 }

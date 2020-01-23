@@ -2,6 +2,7 @@ package com.deyvitineo.notes.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "notes")
@@ -19,7 +20,15 @@ public class Note {
     @ColumnInfo(name = "timestamp")
     private String timestamp;
 
+    @Ignore
     public Note(String title, String content, String timestamp) {
+        this.title = title;
+        this.content = content;
+        this.timestamp = timestamp;
+    }
+
+    public Note(Long id, String title, String content, String timestamp) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;

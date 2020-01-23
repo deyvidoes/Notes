@@ -5,15 +5,20 @@ import java.util.Date;
 
 public class Utility {
 
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MMM-dd,-yyyy h:mm a");
+
     public static String getCurrentTimestamp(){
 
         try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-dd,-yyyy h:mm a");
-            String currentDateTime = dateFormat.format(new Date());
+            String currentDateTime = DATE_FORMAT.format(new Date());
 
             return currentDateTime;
         } catch (Exception e){
             return null;
         }
+    }
+
+    public static boolean canNoteBeSaved(String title, String content){
+        return (title.trim().isEmpty() || content.trim().isEmpty() ? false: true);
     }
 }

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.deyvitineo.notes.entities.Note;
 import com.deyvitineo.notes.util.Utility;
 import com.deyvitineo.notes.viewmodels.AddEditNoteViewModel;
+import com.deyvitineo.notes.viewmodels.AddEditNoteViewModelFactory;
 
 public class NoteActivity extends AppCompatActivity implements View.OnTouchListener,
         GestureDetector.OnGestureListener,
@@ -36,6 +37,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
     private static final int EDIT_MODE_DISABLED = 0;
 
 
+    private AddEditNoteViewModelFactory factory;
     private AddEditNoteViewModel mAddEditNoteViewModel;
 
     private String mTitle, mContent;
@@ -86,7 +88,8 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         mCheck = findViewById(R.id.toolbar_check);
         mBackArrow = findViewById(R.id.toolbar_back_arrow);
 
-        mAddEditNoteViewModel = ViewModelProviders.of(this).get(AddEditNoteViewModel.class);
+        factory = new AddEditNoteViewModelFactory(this.getApplication());
+        mAddEditNoteViewModel = ViewModelProviders.of(this, factory).get(AddEditNoteViewModel.class);
     }
 
     private void setListeners() {
@@ -108,11 +111,9 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
             } else {
                 if(intent.hasExtra(EXTRA_ID)){
                     mTitle = intent.getStringExtra(EXTRA_TITLE);
-                } else{
-
+                    enableViewMode();
+                    Log.d(TAG, "initActivityFromIntent: called 2: NEWLY CREATED NOTE OR LOADED AFTER CONFIG CHANGES");
                 }
-                enableViewMode();
-                Log.d(TAG, "initActivityFromIntent: called 2: NEWLY CREATED NOTE OR LOADED AFTER CONFIG CHANGES");
             }
         } else if (mID == null && !intent.hasExtra(EXTRA_ID)) { //new note
             enableEditMode();
@@ -129,7 +130,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
 
     /**
      * Disables any content interaction with the edit text view for the description/content,
-     * making it a "textview"
+     * making it a "text_view"
      */
     private void disableContentInteraction() {
         mEditTextContent.setKeyListener(null);
@@ -226,11 +227,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
     //hides keyboard
     private void hideSoftKeyboard() {
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -254,8 +250,8 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
                 mTitle = mEditTitle.getText().toString();
                 mContent = mEditTextContent.getText().toString();
 
-                //Requires notes to have both title and description
-                if (mTitle.trim().isEmpty() || mContent.trim().isEmpty()) {
+                //If either field is empty, give error message
+                if (!Utility.canNoteBeSaved(mTitle, mContent)) {
                     Toast.makeText(this, "Please add a title and description", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -339,4 +335,3 @@ public class NoteActivity extends AppCompatActivity implements View.OnTouchListe
         super.onBackPressed();
     }
 }
-
